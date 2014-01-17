@@ -163,13 +163,13 @@ TEST(EventQueueTests, TimerTests) {
   EXPECT_EQ(2, repeatingListener.num_times_called);
   EXPECT_EQ(1, oneShotListener.num_times_called);
 
-  delete eventQueue;
-  EXPECT_EQ(2, MemoryTrackingTimer::num_allocated);
-  EXPECT_TRUE(repeatingTimer->IsRunning());
-  EXPECT_FALSE(oneShotTimer->IsRunning());
-
-  delete repeatingTimer;
-  EXPECT_EQ(1, MemoryTrackingTimer::num_allocated);
-  delete oneShotTimer;
-  EXPECT_EQ(0, MemoryTrackingTimer::num_allocated);
+    delete repeatingTimer;
+    EXPECT_EQ(1, MemoryTrackingTimer::num_allocated);
+    EXPECT_EQ(0, eventQueue->GetNumTimers());
+    
+    delete oneShotTimer;
+    EXPECT_EQ(0, MemoryTrackingTimer::num_allocated);
+    EXPECT_EQ(0, eventQueue->GetNumTimers());
+    
+    delete eventQueue;
 }

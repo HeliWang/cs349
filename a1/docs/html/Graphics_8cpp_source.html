@@ -209,7 +209,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    XTextItem xTextItem;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    xTextItem.chars  = <span class="keyword">const_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(text.c_str());</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    xTextItem.nchars = text.size();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    xTextItem.font   = None;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    xTextItem.font   = XLoadFont(this-&gt;<a class="code" href="classcs349_1_1Graphics.html#a79155f1f8104cb204ede43c4f504511e">display</a>, <span class="stringliteral">&quot;a14&quot;</span>);</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    xTextItem.delta  = 0;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <a class="code" href="classcs349_1_1Point.html">Point</a> newPoint = this-&gt;<a class="code" href="classcs349_1_1Graphics.html#a90f3a1c2bd550653e4ee59323980b051">transform</a> * p;</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    XDrawText(this-&gt;<a class="code" href="classcs349_1_1Graphics.html#a79155f1f8104cb204ede43c4f504511e">display</a>, this-&gt;<a class="code" href="classcs349_1_1Graphics.html#ae45988494338e6d9deb53cf5d4b17b46">window</a>, this-&gt;<a class="code" href="classcs349_1_1Graphics.html#ad4cb916a21df2a2bf82cf855f3252329" title="X window Graphics Context. ">gc</a>, (<span class="keywordtype">int</span>)newPoint.<a class="code" href="classcs349_1_1Point.html#a5a06c6c925c640544adf88a4d3ad5995">x</a>, (<span class="keywordtype">int</span>)newPoint.<a class="code" href="classcs349_1_1Point.html#a8f5d9bfd28ef070ad478078ea62ba1a1">y</a>, &amp;xTextItem, 1);</div>
@@ -329,7 +329,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 16 2014 10:50:03 for CS349 WatGUI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 17 2014 10:56:10 for CS349 WatGUI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

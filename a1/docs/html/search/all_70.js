@@ -8,6 +8,8 @@ var searchData=
   ['paintevent_2ecpp',['PaintEvent.cpp',['../PaintEvent_8cpp.html',1,'']]],
   ['paintevent_2eh',['PaintEvent.h',['../PaintEvent_8h.html',1,'']]],
   ['parent',['parent',['../classcs349_1_1Component.html#a220f5d4ef4ba9f7e6bc712655a159d71',1,'cs349::Component']]],
+  ['pausedlast',['pausedLast',['../classcs349_1_1StopWatch.html#ad3c293395a486f2a1182daa60ef53c75',1,'cs349::StopWatch']]],
+  ['pausedms',['pausedMS',['../classcs349_1_1StopWatch.html#a089fe523af999a4934f554ed2e7ca3cb',1,'cs349::StopWatch']]],
   ['pi',['PI',['../AffineTransform_8h.html#a598a3330b3c21701223ee0ca14316eca',1,'AffineTransform.h']]],
   ['point',['Point',['../classcs349_1_1Point.html',1,'cs349']]],
   ['point',['Point',['../classcs349_1_1Point.html#aa3c16e72ba99b2b524d9fc5039efd428',1,'cs349::Point::Point()'],['../classcs349_1_1Point.html#a6d3ff99efff7439d71cc34ef45fbf3f0',1,'cs349::Point::Point(double x, double y)']]],

@@ -17,7 +17,8 @@ namespace cs349
 
   void PaintEvent::DispatchEvent()
   {
-    LOG_TODO << "TODO CS349: Implement PaintEvent::DispatchEvent()";
+//    LOG_TODO << "TODO CS349: Implement PaintEvent::DispatchEvent()";
+      this->GetWindow()->HandlePaintEvent(*this);
 // TODO CS349
   }
 

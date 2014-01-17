@@ -28,15 +28,41 @@ namespace cs349 {
     unsigned long startTimeMS;
 
     /**
+     * The time, in milliseconds, that the stopwatch has been paused
+     * In particular, it keeps a running total of the amount of time needed to subtract from the current time less start time.
+     */
+    unsigned long pausedMS;
+      
+    /**
+     * The time, in milliseconds, that the stop was last paused
+     * In particular, it holds the value the time of the most recent pause.
+     */
+    unsigned long pausedLast;
+      
+    /**
      * Whether the stopwatch is currently running.
      */
     bool running;
 
     /**
+     * Whether the stopwatch has been reset.
+     */
+    bool reset;
+      
+    /**
      * Returns the current time in milliseconds.
      */
     static unsigned long GetCurTime();
-
+      
+    /**
+     * Holds the value of laps!
+     */
+      vector<string> laps;
+      
+    /**
+     * Returns the string value of the given time
+     */
+      string TimeToString(unsigned long count);
   public:
 
     /**
@@ -71,6 +97,16 @@ namespace cs349 {
     void Start();
 
     /**
+     * Resets the stopwatch
+     */
+      void Reset();
+      
+    /**
+     * Lap functionality on stopwatch
+     */
+      void Lap();
+      
+    /**
      * Stop the stopwatch
      */
     void Stop();
@@ -79,7 +115,16 @@ namespace cs349 {
      * Query whether the stopwatch is running or not.
      */
     bool IsRunning() const;
-
+      
+    /**
+     * Query whether the stopwatch was reset or not.
+     */
+      bool IsReset() const;
+      
+    /**
+     * Query to see how many laps are saved currently.
+     */
+      int NumOfLaps() const;
   };
 }
 

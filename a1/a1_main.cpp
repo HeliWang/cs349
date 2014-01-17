@@ -21,7 +21,7 @@ int main (int argc, char *argv[])
   XApplication* app = XApplication::GetInstance();
   scheme_interpreter_init(scheme_init_fname, cs349_init_fname, argc, argv);
 
-  StopWatch* stopWatchWindow = new StopWatch(app->GetEventQueue(), Rectangle(0, 0, 200, 50));
+  StopWatch* stopWatchWindow = new StopWatch(app->GetEventQueue(), Rectangle(0, 0, 390,270));
 
   stopWatchWindow->SetVisible(true);
   

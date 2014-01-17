@@ -256,7 +256,7 @@ Friends</h2></td></tr>
 
 <p>Definition at line <a class="el" href="Timer_8cpp_source.html#l00020">20</a> of file <a class="el" href="Timer_8cpp_source.html">Timer.cpp</a>.</p>
 
-<p>References <a class="el" href="Timer_8h_source.html#l00047">eventQueue</a>, and <a class="el" href="EventQueue_8cpp_source.html#l00018">cs349::EventQueue::RemoveTimer()</a>.</p>
+<p>References <a class="el" href="Timer_8h_source.html#l00047">eventQueue</a>, and <a class="el" href="EventQueue_8cpp_source.html#l00019">cs349::EventQueue::RemoveTimer()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  {</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classcs349_1_1Timer.html#a589adf8798c90b075c4a5d380a9d6a7c">eventQueue</a>) {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      <a class="code" href="classcs349_1_1Timer.html#a589adf8798c90b075c4a5d380a9d6a7c">eventQueue</a>-&gt;<a class="code" href="classcs349_1_1EventQueue.html#a701f09c0719789a1dd388f4a8b88194d">RemoveTimer</a>(<span class="keyword">this</span>);</div>
@@ -395,9 +395,9 @@ Friends</h2></td></tr>
 
 <p>Definition at line <a class="el" href="Timer_8cpp_source.html#l00049">49</a> of file <a class="el" href="Timer_8cpp_source.html">Timer.cpp</a>.</p>
 
-<p>References <a class="el" href="EventQueue_8cpp_source.html#l00025">cs349::EventQueue::AddEventToQueue()</a>, <a class="el" href="Timer_8h_source.html#l00049">delayMS</a>, <a class="el" href="Timer_8h_source.html#l00047">eventQueue</a>, <a class="el" href="Timer_8cpp_source.html#l00032">GetCurrentTime()</a>, <a class="el" href="Timer_8h_source.html#l00050">lastTime</a>, <a class="el" href="Timer_8h_source.html#l00051">repeat</a>, <a class="el" href="Timer_8h_source.html#l00052">running</a>, <a class="el" href="Timer_8cpp_source.html#l00073">Stop()</a>, and <a class="el" href="Timer_8h_source.html#l00065">TimerEvent</a>.</p>
+<p>References <a class="el" href="EventQueue_8cpp_source.html#l00026">cs349::EventQueue::AddEventToQueue()</a>, <a class="el" href="Timer_8h_source.html#l00049">delayMS</a>, <a class="el" href="Timer_8h_source.html#l00047">eventQueue</a>, <a class="el" href="Timer_8cpp_source.html#l00032">GetCurrentTime()</a>, <a class="el" href="Timer_8h_source.html#l00050">lastTime</a>, <a class="el" href="Timer_8h_source.html#l00051">repeat</a>, <a class="el" href="Timer_8h_source.html#l00052">running</a>, <a class="el" href="Timer_8cpp_source.html#l00073">Stop()</a>, and <a class="el" href="Timer_8h_source.html#l00065">TimerEvent</a>.</p>
 
-<p>Referenced by <a class="el" href="EventQueue_8cpp_source.html#l00036">cs349::EventQueue::ProcessNextEvent()</a>.</p>
+<p>Referenced by <a class="el" href="EventQueue_8cpp_source.html#l00037">cs349::EventQueue::ProcessNextEvent()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">if</span> (!this-&gt;<a class="code" href="classcs349_1_1Timer.html#af3555198711e3ac42341280b4783d4af" title="Whether it&#39;s currently running. ">running</a>) {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keywordflow">return</span>;</div>
@@ -430,9 +430,9 @@ Friends</h2></td></tr>
 
 <p>Definition at line <a class="el" href="Timer_8cpp_source.html#l00064">64</a> of file <a class="el" href="Timer_8cpp_source.html">Timer.cpp</a>.</p>
 
-<p>References <a class="el" href="EventQueue_8cpp_source.html#l00014">cs349::EventQueue::AddTimer()</a>, <a class="el" href="Timer_8h_source.html#l00047">eventQueue</a>, <a class="el" href="Timer_8cpp_source.html#l00032">GetCurrentTime()</a>, <a class="el" href="Timer_8h_source.html#l00050">lastTime</a>, and <a class="el" href="Timer_8h_source.html#l00052">running</a>.</p>
+<p>References <a class="el" href="EventQueue_8cpp_source.html#l00015">cs349::EventQueue::AddTimer()</a>, <a class="el" href="Timer_8h_source.html#l00047">eventQueue</a>, <a class="el" href="Timer_8cpp_source.html#l00032">GetCurrentTime()</a>, <a class="el" href="Timer_8h_source.html#l00050">lastTime</a>, and <a class="el" href="Timer_8h_source.html#l00052">running</a>.</p>
 
-<p>Referenced by <a class="el" href="StopWatch_8cpp_source.html#l00010">cs349::StopWatch::StopWatch()</a>, and <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00106">TEST()</a>.</p>
+<p>Referenced by <a class="el" href="StopWatch_8cpp_source.html#l00011">cs349::StopWatch::StopWatch()</a>, and <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00106">TEST()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  {</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (!this-&gt;<a class="code" href="classcs349_1_1Timer.html#af3555198711e3ac42341280b4783d4af" title="Whether it&#39;s currently running. ">running</a>) {</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;      <a class="code" href="classcs349_1_1Timer.html#a589adf8798c90b075c4a5d380a9d6a7c">eventQueue</a>-&gt;<a class="code" href="classcs349_1_1EventQueue.html#ac0fd905b06abe40b91fc71a760d7dfe2">AddTimer</a>(<span class="keyword">this</span>);</div>
@@ -459,9 +459,9 @@ Friends</h2></td></tr>
 
 <p>Definition at line <a class="el" href="Timer_8cpp_source.html#l00073">73</a> of file <a class="el" href="Timer_8cpp_source.html">Timer.cpp</a>.</p>
 
-<p>References <a class="el" href="Timer_8h_source.html#l00047">eventQueue</a>, <a class="el" href="EventQueue_8cpp_source.html#l00018">cs349::EventQueue::RemoveTimer()</a>, and <a class="el" href="Timer_8h_source.html#l00052">running</a>.</p>
+<p>References <a class="el" href="Timer_8h_source.html#l00047">eventQueue</a>, <a class="el" href="EventQueue_8cpp_source.html#l00019">cs349::EventQueue::RemoveTimer()</a>, and <a class="el" href="Timer_8h_source.html#l00052">running</a>.</p>
 
-<p>Referenced by <a class="el" href="Timer_8cpp_source.html#l00049">ServiceTimer()</a>, and <a class="el" href="StopWatch_8cpp_source.html#l00017">cs349::StopWatch::~StopWatch()</a>.</p>
+<p>Referenced by <a class="el" href="Timer_8cpp_source.html#l00049">ServiceTimer()</a>, and <a class="el" href="StopWatch_8cpp_source.html#l00022">cs349::StopWatch::~StopWatch()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  {</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (this-&gt;<a class="code" href="classcs349_1_1Timer.html#af3555198711e3ac42341280b4783d4af" title="Whether it&#39;s currently running. ">running</a>) {</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      this-&gt;<a class="code" href="classcs349_1_1Timer.html#af3555198711e3ac42341280b4783d4af" title="Whether it&#39;s currently running. ">running</a> = <span class="keyword">false</span>;</div>
@@ -678,7 +678,7 @@ Friends</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 16 2014 10:50:05 for CS349 WatGUI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 17 2014 10:56:11 for CS349 WatGUI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

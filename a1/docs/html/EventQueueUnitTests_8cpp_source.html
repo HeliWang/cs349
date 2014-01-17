@@ -252,20 +252,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  EXPECT_EQ(2, repeatingListener.<a class="code" href="classTimerListenerCounter.html#a6c205c9a8bdefcddbda073389069957d">num_times_called</a>);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  EXPECT_EQ(1, oneShotListener.<a class="code" href="classTimerListenerCounter.html#a6c205c9a8bdefcddbda073389069957d">num_times_called</a>);</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keyword">delete</span> eventQueue;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  EXPECT_EQ(2, <a class="code" href="classMemoryTrackingTimer.html#a94d73bd942574cf6985b3661e88a9dcb">MemoryTrackingTimer::num_allocated</a>);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  EXPECT_TRUE(repeatingTimer-&gt;<a class="code" href="classcs349_1_1Timer.html#a95be2ebf5efec63dc3fd50e00b381d31">IsRunning</a>());</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  EXPECT_FALSE(oneShotTimer-&gt;<a class="code" href="classcs349_1_1Timer.html#a95be2ebf5efec63dc3fd50e00b381d31">IsRunning</a>());</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="keyword">delete</span> repeatingTimer;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  EXPECT_EQ(1, <a class="code" href="classMemoryTrackingTimer.html#a94d73bd942574cf6985b3661e88a9dcb">MemoryTrackingTimer::num_allocated</a>);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="keyword">delete</span> oneShotTimer;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  EXPECT_EQ(0, <a class="code" href="classMemoryTrackingTimer.html#a94d73bd942574cf6985b3661e88a9dcb">MemoryTrackingTimer::num_allocated</a>);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keyword">delete</span> repeatingTimer;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    EXPECT_EQ(1, <a class="code" href="classMemoryTrackingTimer.html#a94d73bd942574cf6985b3661e88a9dcb">MemoryTrackingTimer::num_allocated</a>);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    EXPECT_EQ(0, eventQueue-&gt;<a class="code" href="classcs349_1_1EventQueue.html#a6b6fb0172c9c628382af68c5211723bc">GetNumTimers</a>());</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keyword">delete</span> oneShotTimer;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    EXPECT_EQ(0, <a class="code" href="classMemoryTrackingTimer.html#a94d73bd942574cf6985b3661e88a9dcb">MemoryTrackingTimer::num_allocated</a>);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    EXPECT_EQ(0, eventQueue-&gt;<a class="code" href="classcs349_1_1EventQueue.html#a6b6fb0172c9c628382af68c5211723bc">GetNumTimers</a>());</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keyword">delete</span> eventQueue;</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 16 2014 10:50:03 for CS349 WatGUI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 17 2014 10:56:10 for CS349 WatGUI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

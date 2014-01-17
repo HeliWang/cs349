@@ -149,8 +149,14 @@ namespace cs349
      *   Component (see notes in the header file)
      */
 
-    LOG_TODO << "TODO CS349: Implement Component::HandleMouseEvent (remove when implemented)";
+//    LOG_TODO << "TODO CS349: Implement Component::HandleMouseEvent (remove when implemented)";
 // TODO CS349
+      for (vector<Component*>::iterator iter=this->children.begin(); iter != this->children.end(); iter++) {
+          Component* c = (*iter);
+          if (c->HandleMouseEvent(e)) {
+              return true;
+          }
+      }
     return false;
   }
 
@@ -182,6 +188,13 @@ namespace cs349
 
     LOG_TODO << "TODO CS349: Implement Component::Paint (remove when implemented)";
 // TODO CS349
+      if(visible){
+          //save states
+          //prepare for drawing
+          //call paintcomponent
+          //make sure children paint themselves
+          //resotre anything
+      }
   }
 
   void Component::Repaint()

@@ -142,7 +142,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00038">38</a> of file <a class="el" href="EventQueueUnitTests_8cpp_source.html">EventQueueUnitTests.cpp</a>.</p>
 
-<p>References <a class="el" href="EventQueue_8cpp_source.html#l00025">cs349::EventQueue::AddEventToQueue()</a>, <a class="el" href="EventQueue_8cpp_source.html#l00067">cs349::EventQueue::GetNumEventsInQueue()</a>, <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00012">MemoryTrackingEvent::num_allocated</a>, <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00013">MemoryTrackingEvent::num_dispatches</a>, and <a class="el" href="EventQueue_8cpp_source.html#l00036">cs349::EventQueue::ProcessNextEvent()</a>.</p>
+<p>References <a class="el" href="EventQueue_8cpp_source.html#l00026">cs349::EventQueue::AddEventToQueue()</a>, <a class="el" href="EventQueue_8cpp_source.html#l00074">cs349::EventQueue::GetNumEventsInQueue()</a>, <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00012">MemoryTrackingEvent::num_allocated</a>, <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00013">MemoryTrackingEvent::num_dispatches</a>, and <a class="el" href="EventQueue_8cpp_source.html#l00037">cs349::EventQueue::ProcessNextEvent()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                                    {</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="comment">// Test that events are queued properly</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <a class="code" href="classcs349_1_1EventQueue.html">EventQueue</a> eventQueue;</div>
@@ -190,7 +190,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00057">57</a> of file <a class="el" href="EventQueueUnitTests_8cpp_source.html">EventQueueUnitTests.cpp</a>.</p>
 
-<p>References <a class="el" href="EventQueue_8cpp_source.html#l00025">cs349::EventQueue::AddEventToQueue()</a>, <a class="el" href="EventQueue_8cpp_source.html#l00067">cs349::EventQueue::GetNumEventsInQueue()</a>, and <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00012">MemoryTrackingEvent::num_allocated</a>.</p>
+<p>References <a class="el" href="EventQueue_8cpp_source.html#l00026">cs349::EventQueue::AddEventToQueue()</a>, <a class="el" href="EventQueue_8cpp_source.html#l00074">cs349::EventQueue::GetNumEventsInQueue()</a>, and <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00012">MemoryTrackingEvent::num_allocated</a>.</p>
 <div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                                {</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// Test that events are properly deleted on destruction</span></div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <a class="code" href="classcs349_1_1EventQueue.html">EventQueue</a>* eventQueue = <span class="keyword">new</span> <a class="code" href="classcs349_1_1EventQueue.html">EventQueue</a>();</div>
@@ -234,7 +234,7 @@ Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00106">106</a> of file <a class="el" href="EventQueueUnitTests_8cpp_source.html">EventQueueUnitTests.cpp</a>.</p>
 
-<p>References <a class="el" href="EventQueue_8cpp_source.html#l00067">cs349::EventQueue::GetNumEventsInQueue()</a>, <a class="el" href="EventQueue_8cpp_source.html#l00071">cs349::EventQueue::GetNumTimers()</a>, <a class="el" href="Timer_8cpp_source.html#l00039">cs349::Timer::IsRunning()</a>, <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00074">MemoryTrackingTimer::num_allocated</a>, <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00096">TimerListenerCounter::num_times_called</a>, <a class="el" href="EventQueue_8cpp_source.html#l00036">cs349::EventQueue::ProcessNextEvent()</a>, and <a class="el" href="Timer_8cpp_source.html#l00064">cs349::Timer::Start()</a>.</p>
+<p>References <a class="el" href="EventQueue_8cpp_source.html#l00074">cs349::EventQueue::GetNumEventsInQueue()</a>, <a class="el" href="EventQueue_8cpp_source.html#l00078">cs349::EventQueue::GetNumTimers()</a>, <a class="el" href="Timer_8cpp_source.html#l00039">cs349::Timer::IsRunning()</a>, <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00074">MemoryTrackingTimer::num_allocated</a>, <a class="el" href="EventQueueUnitTests_8cpp_source.html#l00096">TimerListenerCounter::num_times_called</a>, <a class="el" href="EventQueue_8cpp_source.html#l00037">cs349::EventQueue::ProcessNextEvent()</a>, and <a class="el" href="Timer_8cpp_source.html#l00064">cs349::Timer::Start()</a>.</p>
 <div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                                  {</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="comment">// Test timers function as expected on event queue (e.g., that they</span></div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="comment">// are serviced on a regular basis)</span></div>
@@ -295,15 +295,15 @@ Functions</h2></td></tr>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  EXPECT_EQ(2, repeatingListener.<a class="code" href="classTimerListenerCounter.html#a6c205c9a8bdefcddbda073389069957d">num_times_called</a>);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  EXPECT_EQ(1, oneShotListener.<a class="code" href="classTimerListenerCounter.html#a6c205c9a8bdefcddbda073389069957d">num_times_called</a>);</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  <span class="keyword">delete</span> eventQueue;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  EXPECT_EQ(2, <a class="code" href="classMemoryTrackingTimer.html#a94d73bd942574cf6985b3661e88a9dcb">MemoryTrackingTimer::num_allocated</a>);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  EXPECT_TRUE(repeatingTimer-&gt;<a class="code" href="classcs349_1_1Timer.html#a95be2ebf5efec63dc3fd50e00b381d31">IsRunning</a>());</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  EXPECT_FALSE(oneShotTimer-&gt;<a class="code" href="classcs349_1_1Timer.html#a95be2ebf5efec63dc3fd50e00b381d31">IsRunning</a>());</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="keyword">delete</span> repeatingTimer;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  EXPECT_EQ(1, <a class="code" href="classMemoryTrackingTimer.html#a94d73bd942574cf6985b3661e88a9dcb">MemoryTrackingTimer::num_allocated</a>);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="keyword">delete</span> oneShotTimer;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  EXPECT_EQ(0, <a class="code" href="classMemoryTrackingTimer.html#a94d73bd942574cf6985b3661e88a9dcb">MemoryTrackingTimer::num_allocated</a>);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keyword">delete</span> repeatingTimer;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    EXPECT_EQ(1, <a class="code" href="classMemoryTrackingTimer.html#a94d73bd942574cf6985b3661e88a9dcb">MemoryTrackingTimer::num_allocated</a>);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    EXPECT_EQ(0, eventQueue-&gt;<a class="code" href="classcs349_1_1EventQueue.html#a6b6fb0172c9c628382af68c5211723bc">GetNumTimers</a>());</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keyword">delete</span> oneShotTimer;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    EXPECT_EQ(0, <a class="code" href="classMemoryTrackingTimer.html#a94d73bd942574cf6985b3661e88a9dcb">MemoryTrackingTimer::num_allocated</a>);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    EXPECT_EQ(0, eventQueue-&gt;<a class="code" href="classcs349_1_1EventQueue.html#a6b6fb0172c9c628382af68c5211723bc">GetNumTimers</a>());</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keyword">delete</span> eventQueue;</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
@@ -311,7 +311,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 16 2014 10:50:04 for CS349 WatGUI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 17 2014 10:56:10 for CS349 WatGUI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -8,6 +8,8 @@
 #include "XWindow.h"
 #include "SchemeInterpreter.h"
 #include "Logging.h"
+#include "MouseEvent.h"
+#include "KeyEvent.h"
 
 namespace cs349
 {
@@ -126,10 +128,24 @@ namespace cs349
       XNextEvent(this->display, &event);
       XWindow* window = XWindow::GetXWindowForWindow(event.xany.window);
 
-      LOG_TODO << "TODO CS349: Implement XApplication::CheckForXEvents (remove when implemented)";
+//      LOG_TODO << "TODO CS349: Implement XApplication::CheckForXEvents (remove when implemented)";
       switch (event.type) {
-
 // TODO CS349
+          case KeyPress:
+//              LOG_INFO << "KeyPress Action Detected.";
+              newEvent = new KeyEvent(window,KeyEvent::keyPress,event.xkey);
+
+              break;
+          case ButtonPress:
+//              LOG_INFO << "MouseDown Action Detected.";
+              newEvent = new MouseEvent(window,MouseEvent::mouseDown,Point(event.xbutton.x,event.xbutton.y));
+              break;
+              
+          case Expose:
+              LOG_INFO << "EXPOSE";
+              //hacked together. sends a mousedrag for expose
+              newEvent = new MouseEvent(window,MouseEvent::mouseDrag,Point(event.xbutton.x,event.xbutton.y));
+              break;
 
       case DestroyNotify:
         LOG(INFO) << "Destroy notify event received";
@@ -180,9 +196,16 @@ namespace cs349
       if (interpreterReturnCode == 1) {
         this->Quit();
       }
+        
+        CheckForXEvents();
 
-      LOG_TODO << "TODO CS349: Implement event loop in XApplication::Run (remove when implemented)";
-// TODO CS349
+//      LOG_TODO << "TODO CS349: Implement event loop in XApplication::Run (remove when implemented)";
+        eventQueue.ProcessNextEvent();
+        XFlush(display);
+        if(XPending(display) > 0){
+        }else{
+            usleep(1000);
+        }
     }
   }
 }

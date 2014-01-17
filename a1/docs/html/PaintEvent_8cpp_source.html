@@ -106,19 +106,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="code" href="classcs349_1_1PaintEvent.html#a001f432878f5c7b5badad3e63fd243b0">   18</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classcs349_1_1PaintEvent.html#a001f432878f5c7b5badad3e63fd243b0">PaintEvent::DispatchEvent</a>()</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="Logging_8h.html#a10a0cfcfbc902de123b4e2f986073a75">LOG_TODO</a> &lt;&lt; <span class="stringliteral">&quot;TODO CS349: Implement PaintEvent::DispatchEvent()&quot;</span>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// TODO CS349</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="classcs349_1_1PaintEvent.html#ac9502dc594cb71008e123fcc4f165912">   24</a></span>&#160;  <a class="code" href="classcs349_1_1Rectangle.html">Rectangle</a> <a class="code" href="classcs349_1_1PaintEvent.html#ac9502dc594cb71008e123fcc4f165912">PaintEvent::GetDamagedArea</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classcs349_1_1PaintEvent.html#a29f0482883f70ecf46a05ad28cbad808">damagedArea</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//    LOG_TODO &lt;&lt; &quot;TODO CS349: Implement PaintEvent::DispatchEvent()&quot;;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;      this-&gt;<a class="code" href="classcs349_1_1ComponentEvent.html#a29d2e7088243e133b6198a327b3856de">GetWindow</a>()-&gt;<a class="code" href="classcs349_1_1XWindow.html#ab140b55ddf3dba515fc16000202db269">HandlePaintEvent</a>(*<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// TODO CS349</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classcs349_1_1PaintEvent.html#ac9502dc594cb71008e123fcc4f165912">   25</a></span>&#160;  <a class="code" href="classcs349_1_1Rectangle.html">Rectangle</a> <a class="code" href="classcs349_1_1PaintEvent.html#ac9502dc594cb71008e123fcc4f165912">PaintEvent::GetDamagedArea</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">return</span> this-&gt;<a class="code" href="classcs349_1_1PaintEvent.html#a29f0482883f70ecf46a05ad28cbad808">damagedArea</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jan 16 2014 10:50:03 for CS349 WatGUI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jan 17 2014 10:56:10 for CS349 WatGUI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
