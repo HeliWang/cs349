@@ -52,6 +52,15 @@ using namespace cs349;
  * does xxx
  * ----
  */
+
+void EdwardPause(){
+    /*XEvent event; // save the event here
+    while( true ) {  // event loop until 'exit'
+        XNextEvent( XApplication::GetInstance()->GetXDisplay(), &event ); // wait for next event
+        if( event.type == KeyPress) break;
+    }
+    */
+}
 //default test #1
 TEST(A1UnitTestDemos, Construction) {
   StopWatch* watch = new StopWatch(XApplication::GetInstance()->GetEventQueue(), Rectangle(0, 0, 390, 270));
@@ -115,7 +124,9 @@ TEST(A1UnitTestDemos, Interaction) {
 TEST(A1UnitTestDemos,EdwardTestStartStop) {
     StopWatch* watch = new StopWatch(XApplication::GetInstance()->GetEventQueue(), Rectangle(0, 0, 390, 270));
 //    watch->SetVisible(true);
-//    XApplication::GetInstance()->Run();
+//    watch->Paint(watch->GetGraphics());
+//    watch->HandlePaintEvent(PaintEvent(watch,watch->GetBounds()));
+//    XFlush(XApplication::GetInstance()->GetXDisplay());
     
     EXPECT_FALSE(watch == NULL);
     EXPECT_FALSE(watch->IsRunning());
@@ -124,7 +135,7 @@ TEST(A1UnitTestDemos,EdwardTestStartStop) {
     EventQueue* queue = XApplication::GetInstance()->GetEventQueue();
     EXPECT_FALSE(queue == NULL);
     
-    //sleep(500);
+    
     
     //random click, not on start button
     MouseEvent* e = new MouseEvent(watch->GetParentWindow(), MouseEvent::mouseUp, Point(190,231));
@@ -138,7 +149,7 @@ TEST(A1UnitTestDemos,EdwardTestStartStop) {
     }
     EXPECT_FALSE(watch->IsRunning());
     
-    //sleep(500);
+//    usleep(500000);
     
     //click in empty space where reset/lap button is
     e = new MouseEvent(watch->GetParentWindow(), MouseEvent::mouseUp, Point(292,231));
@@ -152,7 +163,7 @@ TEST(A1UnitTestDemos,EdwardTestStartStop) {
     }
     EXPECT_FALSE(watch->IsRunning());
 
-    //sleep(500);
+//    usleep(500000);
     
     //actually click on start
     e = new MouseEvent(watch->GetParentWindow(), MouseEvent::mouseUp, Point(233,191));
@@ -165,8 +176,10 @@ TEST(A1UnitTestDemos,EdwardTestStartStop) {
         queue->ProcessNextEvent();
     }
     EXPECT_TRUE(watch->IsRunning());
+    
     //let it run for a seconds
-    //sleep(1000);
+    
+//    usleep(1000000);
     
     //click in empty state next to "stop" button
     //random click, not on start button
@@ -181,7 +194,7 @@ TEST(A1UnitTestDemos,EdwardTestStartStop) {
     }
     EXPECT_TRUE(watch->IsRunning());
     
-    //sleep(500);
+//    sleep(500000);
     
     //actually click on stop
     e = new MouseEvent(watch->GetParentWindow(), MouseEvent::mouseUp, Point(250,200));
@@ -196,6 +209,8 @@ TEST(A1UnitTestDemos,EdwardTestStartStop) {
 
     //sleep(200);
     
+    
+    
     //click reset - this has no effect on watch running :)
     e = new MouseEvent(watch->GetParentWindow(), MouseEvent::mouseUp, Point(292,211));
     queue->AddEventToQueue(e);
@@ -206,6 +221,7 @@ TEST(A1UnitTestDemos,EdwardTestStartStop) {
         queue->ProcessNextEvent();
     }
     EXPECT_FALSE(watch->IsRunning());
+    
     
     delete watch;
 }
