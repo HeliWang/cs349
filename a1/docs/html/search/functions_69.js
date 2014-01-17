@@ -6,6 +6,7 @@ var searchData=
   ['isempty',['IsEmpty',['../classcs349_1_1Rectangle.html#a9cf363b496d6792aa77633d3ef581ded',1,'cs349::Rectangle']]],
   ['ispointincomponent',['IsPointInComponent',['../classcs349_1_1Component.html#afd5382e026f7308bd447b1879043ec04',1,'cs349::Component']]],
   ['ispointinrectangle',['IsPointInRectangle',['../classcs349_1_1Rectangle.html#a9bd45989a36f796bd08faaf311a83517',1,'cs349::Rectangle']]],
+  ['isreset',['IsReset',['../classcs349_1_1StopWatch.html#a9547b7e9b9004c1c4e887585a80d5f2f',1,'cs349::StopWatch']]],
   ['isrunning',['IsRunning',['../classcs349_1_1StopWatch.html#a4e8ba6b51c425e2e054162c5a7f22f29',1,'cs349::StopWatch::IsRunning()'],['../classcs349_1_1Timer.html#a95be2ebf5efec63dc3fd50e00b381d31',1,'cs349::Timer::IsRunning()']]],
   ['isvisible',['IsVisible',['../classcs349_1_1Component.html#abb38343f9f524277b6dc064379dd12e1',1,'cs349::Component']]]
 ];

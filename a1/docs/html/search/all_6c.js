@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['lap',['Lap',['../classcs349_1_1StopWatch.html#a9e18e663ebe5733c356ed2a143d7800f',1,'cs349::StopWatch']]],
+  ['laps',['laps',['../classcs349_1_1StopWatch.html#a1f184213e9940f536c069d6e0fcad4bf',1,'cs349::StopWatch']]],
   ['lasttime',['lastTime',['../classcs349_1_1Timer.html#a6ba389755266f5b08c0dace6084bae19',1,'cs349::Timer']]],
   ['load_5fscheme_5fscript',['load_scheme_script',['../SchemeInterpreter_8c.html#acfda56f72d8016599c69be7e5a3081da',1,'SchemeInterpreter.c']]],
   ['log_5fdebug',['LOG_DEBUG',['../Logging_8h.html#a6ff63e8955665c4a58b1598f2b07c51a',1,'Logging.h']]],

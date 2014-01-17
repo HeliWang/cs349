@@ -13,7 +13,7 @@ var searchData=
   ['removetimerlistener',['RemoveTimerListener',['../classcs349_1_1Timer.html#a807784a60ae95ccd913d3f8d18d8af74',1,'cs349::Timer']]],
   ['repaint',['Repaint',['../classcs349_1_1Component.html#a7698cfdea92136e8650c82b8caafcac9',1,'cs349::Component::Repaint()'],['../classcs349_1_1Component.html#a3225f4673c5411e086550ca6e4467ca5',1,'cs349::Component::Repaint(const Rectangle &amp;r)'],['../classcs349_1_1XWindow.html#a7d455f30caf8c86f6393eb3932cc44ab',1,'cs349::XWindow::Repaint()']]],
   ['repeat',['repeat',['../classcs349_1_1Timer.html#a8a867d4d2881f505ec2cfcdd88d0c05e',1,'cs349::Timer']]],
-  ['reset',['Reset',['../classcs349_1_1StopWatch.html#a6231a1f506670f81c036320003b8b306',1,'cs349::StopWatch::Reset()'],['../classcs349_1_1StopWatch.html#add556b138db5efef3557f197e839a168',1,'cs349::StopWatch::reset()']]],
+  ['reset',['reset',['../classcs349_1_1StopWatch.html#add556b138db5efef3557f197e839a168',1,'cs349::StopWatch::reset()'],['../classcs349_1_1StopWatch.html#a6231a1f506670f81c036320003b8b306',1,'cs349::StopWatch::Reset()']]],
   ['run',['Run',['../classcs349_1_1XApplication.html#a31a87ae22905f52fee02a0322f489afd',1,'cs349::XApplication']]],
   ['run_5fcmd_5fline_5fscripts',['run_cmd_line_scripts',['../SchemeInterpreter_8c.html#ae7fc04f344d1fe4a601383b08b881bf7',1,'SchemeInterpreter.c']]],
   ['running',['running',['../classcs349_1_1StopWatch.html#a98ca1d21af6e14ac338da0dcccca6299',1,'cs349::StopWatch::running()'],['../classcs349_1_1Timer.html#af3555198711e3ac42341280b4783d4af',1,'cs349::Timer::running()']]]
