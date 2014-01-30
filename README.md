@@ -1,1 +1,1 @@
-# CS349 - User Interfaces, Winter 2014
+# CS349 - User Interfaces, Winter '14
