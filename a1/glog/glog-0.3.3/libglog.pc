@@ -1,4 +1,4 @@
-prefix=/home/cs349/Desktop/Assignments/a1/glog/glog-0.3.3/../glog
+prefix=/media/sf_SharedVMFolder/a1/e2yang/a1/glog/glog-0.3.3/../glog
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include
