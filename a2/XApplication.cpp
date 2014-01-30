@@ -170,6 +170,13 @@ namespace cs349
         newEvent = new PaintEvent(window, Rectangle(event.xexpose.x, event.xexpose.y, event.xexpose.width, event.xexpose.height));
         break;
 
+      case KeyPress:
+        newEvent = new KeyEvent(window,KeyEvent::keyPress,event.xkey);
+        break;
+      
+      case ButtonPress:
+        newEvent = new MouseEvent(window,MouseEvent::mouseDown,Point(event.xbutton.x,event.xbutton.y));
+        break;
 // TODO CS349
 
       case DestroyNotify:
@@ -227,8 +234,15 @@ namespace cs349
         this->Quit();
       }
 
-      LOG_TODO << "TODO CS349: Implement event loop in XApplication::Run (remove when implemented)";
+      // LOG_TODO << "TODO CS349: Implement event loop in XApplication::Run (remove when implemented)";
 // TODO CS349
+
+      this->eventQueue->ProcessNextEvent();
+        XFlush(display);
+        if(XPending(display) > 0){
+        }else{
+            usleep(1000);
+        }
     } while (!this->quit && !runOnce);
   }
 }

@@ -36,15 +36,15 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = x86_64-unknown-linux-gnu
-host_triplet = x86_64-unknown-linux-gnu
+build_triplet = i686-pc-linux-gnu
+host_triplet = i686-pc-linux-gnu
 
 # These are good warnings to turn on by default
 am__append_1 = -Wall -Wwrite-strings -Woverloaded-virtual -Wno-sign-compare
 
 # These are x86-specific, having to do with frame-pointers
-#am__append_2 = -fno-omit-frame-pointer
-am__append_3 = -DNO_FRAME_POINTER
+##am__append_2 = -fno-omit-frame-pointer
+#am__append_3 = -DNO_FRAME_POINTER
 #am__append_4 = -fno-rtti
 TESTS = logging_unittest$(EXEEXT) demangle_unittest$(EXEEXT) \
 	stacktrace_unittest$(EXEEXT) symbolize_unittest$(EXEEXT) \
@@ -329,13 +329,13 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/mterry/Documents/cs349-w14/cs349-watgui-14/glog/glog-0.3.3/missing --run aclocal-1.11
+ACLOCAL = ${SHELL} /home/cs349/Desktop/Assignments/a2/glog/glog-0.3.3/missing --run aclocal-1.11
 AMTAR = $${TAR-tar}
 AR = ar
-AUTOCONF = ${SHELL} /home/mterry/Documents/cs349-w14/cs349-watgui-14/glog/glog-0.3.3/missing --run autoconf
-AUTOHEADER = ${SHELL} /home/mterry/Documents/cs349-w14/cs349-watgui-14/glog/glog-0.3.3/missing --run autoheader
-AUTOMAKE = ${SHELL} /home/mterry/Documents/cs349-w14/cs349-watgui-14/glog/glog-0.3.3/missing --run automake-1.11
-AWK = gawk
+AUTOCONF = ${SHELL} /home/cs349/Desktop/Assignments/a2/glog/glog-0.3.3/missing --run autoconf
+AUTOHEADER = ${SHELL} /home/cs349/Desktop/Assignments/a2/glog/glog-0.3.3/missing --run autoheader
+AUTOMAKE = ${SHELL} /home/cs349/Desktop/Assignments/a2/glog/glog-0.3.3/missing --run automake-1.11
+AWK = mawk
 CC = gcc
 CCDEPMODE = depmode=gcc3
 CFLAGS = -g -O2
@@ -371,16 +371,16 @@ INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LD = /usr/bin/ld -m elf_x86_64
+LD = /usr/bin/ld
 LDFLAGS = 
 LIBOBJS = 
 LIBS = -lpthread 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIBTOOL_DEPS = ./ltmain.sh
 LIPO = 
-LN_S = ln -s
+LN_S = cp -p
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/mterry/Documents/cs349-w14/cs349-watgui-14/glog/glog-0.3.3/missing --run makeinfo
+MAKEINFO = ${SHELL} /home/cs349/Desktop/Assignments/a2/glog/glog-0.3.3/missing --run makeinfo
 MANIFEST_TOOL = :
 MKDIR_P = /bin/mkdir -p
 NM = /usr/bin/nm -B
@@ -407,10 +407,10 @@ SHELL = /bin/bash
 STRIP = strip
 UNWIND_LIBS = 
 VERSION = 0.3.3
-abs_builddir = /home/mterry/Documents/cs349-w14/cs349-watgui-14/glog/glog-0.3.3
-abs_srcdir = /home/mterry/Documents/cs349-w14/cs349-watgui-14/glog/glog-0.3.3
-abs_top_builddir = /home/mterry/Documents/cs349-w14/cs349-watgui-14/glog/glog-0.3.3
-abs_top_srcdir = /home/mterry/Documents/cs349-w14/cs349-watgui-14/glog/glog-0.3.3
+abs_builddir = /home/cs349/Desktop/Assignments/a2/glog/glog-0.3.3
+abs_srcdir = /home/cs349/Desktop/Assignments/a2/glog/glog-0.3.3
+abs_top_builddir = /home/cs349/Desktop/Assignments/a2/glog/glog-0.3.3
+abs_top_srcdir = /home/cs349/Desktop/Assignments/a2/glog/glog-0.3.3
 ac_ct_AR = ar
 ac_ct_CC = gcc
 ac_ct_CXX = g++
@@ -438,26 +438,26 @@ am__quote =
 am__tar = $${TAR-tar} chof - "$$tardir"
 am__untar = $${TAR-tar} xf -
 bindir = ${exec_prefix}/bin
-build = x86_64-unknown-linux-gnu
+build = i686-pc-linux-gnu
 build_alias = 
-build_cpu = x86_64
+build_cpu = i686
 build_os = linux-gnu
-build_vendor = unknown
+build_vendor = pc
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
 docdir = $(prefix)/share/doc/$(PACKAGE)-$(VERSION)
 dvidir = ${docdir}
 exec_prefix = ${prefix}
-host = x86_64-unknown-linux-gnu
+host = i686-pc-linux-gnu
 host_alias = 
-host_cpu = x86_64
+host_cpu = i686
 host_os = linux-gnu
-host_vendor = unknown
+host_vendor = pc
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/mterry/Documents/cs349-w14/cs349-watgui-14/glog/glog-0.3.3/install-sh
+install_sh = ${SHELL} /home/cs349/Desktop/Assignments/a2/glog/glog-0.3.3/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -466,7 +466,7 @@ mandir = ${datarootdir}/man
 mkdir_p = /bin/mkdir -p
 oldincludedir = /usr/include
 pdfdir = ${docdir}
-prefix = /home/mterry/Documents/cs349-w14/cs349-watgui-14/glog/glog-0.3.3/../glog
+prefix = /home/cs349/Desktop/Assignments/a2/glog/glog-0.3.3/../glog
 program_transform_name = s,x,x,
 psdir = ${docdir}
 sbindir = ${exec_prefix}/sbin
@@ -1551,8 +1551,8 @@ uninstall-am: uninstall-dist_docDATA uninstall-glogincludeHEADERS \
 	uninstall-libLTLIBRARIES uninstall-nodist_glogincludeHEADERS \
 	uninstall-pkgconfigDATA
 
-  # TODO(csilvers): check if -fomit-frame-pointer might be in $(CXXFLAGS),
-  #                 before setting this.
+#  # TODO(csilvers): check if -fomit-frame-pointer might be in $(CXXFLAGS),
+#  #                 before setting this.
 logging_striplog_test_sh: logging_striptest0 logging_striptest2 logging_striptest10
 	$(top_srcdir)/src/logging_striplog_test.sh
 demangle_unittest_sh: demangle_unittest

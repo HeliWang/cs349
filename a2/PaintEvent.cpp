@@ -18,7 +18,8 @@ namespace cs349
   void PaintEvent::DispatchEvent()
   {
     // See MouseEvent's equivalent for a template on how to do this
-    LOG_TODO << "TODO CS349: Implement PaintEvent::DispatchEvent()";
+    // LOG_TODO << "TODO CS349: Implement PaintEvent::DispatchEvent()";
+    this->GetWindow()->HandlePaintEvent(*this);
 // TODO CS349
   }
 

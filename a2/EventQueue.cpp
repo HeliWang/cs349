@@ -65,9 +65,15 @@ namespace cs349 {
       }
     }
 
-    LOG_TODO << "TODO CS349: Implement EventQueue logic in ProcessNextEvent()";
+    // LOG_TODO << "TODO CS349: Implement EventQueue logic in ProcessNextEvent()";
     // As described above: take event from head of queue, dispatch it,
     // then free its memory)
+    if(this->GetNumEventsInQueue()>0){
+      Event* e = this->eventQueue.front();
+      e->DispatchEvent();
+      this->eventQueue.pop();
+      delete(e);
+    }
 // TODO CS349
   }
 
