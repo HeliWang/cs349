@@ -215,16 +215,22 @@ namespace cs349
     this->mouseFocus = component;
   }
 
-  bool XWindow::HandleMouseEvent(const MouseEvent & e) {
+  bool XWindow::HandleMouseEvent(const MouseEvent & e){
+    Component *current = this->GetMouseFocus();
+    if(current == NULL || !current->HandleMouseEvent(e)){
+      ClearMouseFocus();
+      return Component::HandleMouseEvent(e);
+    }
+    this->SetMouseFocus(current);
+    return true;
     // TODO CS349: You must properly handle mouse events here, taking
     // into account things like mouse focus (i.e., whether one
     // Component currently has focus or not). If a Component currently
     // has mouse focus, that means it should have the first
     // opportunity to handle an event.
 
-// TODO CS349
+    // TODO CS349
     // Default is to call Component's implementation of HandleMouseEvent
-    return Component::HandleMouseEvent(e);
   }
   
   long XWindow::GetWindowNum() const {

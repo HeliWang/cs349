@@ -160,12 +160,10 @@ namespace cs349
       // Get event, package it up, add it to the queue
       Event* newEvent = NULL;
       XEvent event;
-      XNextEvent(this->display, &event);
+      XNextEvent(this->display,&event);
       XWindow* window = XWindow::GetXWindowForWindow(event.xany.window);
 
-      LOG_TODO << "TODO CS349: Implement XApplication::CheckForXEvents (remove when implemented)";
       switch (event.type) {
-
       case Expose:
         newEvent = new PaintEvent(window, Rectangle(event.xexpose.x, event.xexpose.y, event.xexpose.width, event.xexpose.height));
         break;
@@ -177,11 +175,13 @@ namespace cs349
       case ButtonPress:
         newEvent = new MouseEvent(window,MouseEvent::mouseDown,Point(event.xbutton.x,event.xbutton.y));
         break;
-// TODO CS349
+      case ButtonRelease:
+        newEvent = new MouseEvent(window,MouseEvent::mouseUp,Point(event.xbutton.x,event.xbutton.y));
+      case MotionNotify:
+        newEvent = new MouseEvent(window,MouseEvent::mouseMove,Point(event.xbutton.x,event.xbutton.y));
 
       case DestroyNotify:
-        // You can ignore this
-        LOG(INFO) << "Destroy notify event received";
+        // LOG(INFO) << "Destroy notify event received";
         break;
       }
 
@@ -234,8 +234,7 @@ namespace cs349
         this->Quit();
       }
 
-      // LOG_TODO << "TODO CS349: Implement event loop in XApplication::Run (remove when implemented)";
-// TODO CS349
+      CheckForXEvents();
 
       this->eventQueue->ProcessNextEvent();
         XFlush(display);

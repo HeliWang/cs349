@@ -149,8 +149,15 @@ namespace cs349
      *   Component (see notes in the header file)
      */
 
-    LOG_TODO << "TODO CS349: Implement Component::HandleMouseEvent (remove when implemented): " << e;
-// TODO CS349
+    // LOG_TODO << "TODO CS349: Implement Component::HandleMouseEvent (remove when implemented): " << e;
+    for (vector<Component*>::iterator iter=this->children.begin(); iter != this->children.end(); iter++) {
+      Component* c = (*iter);
+      MouseEvent f = MouseEvent(e.GetWindow(),e.GetType(),Point(e.GetWhere().x - c->bounds.x,e.GetWhere().y - c->bounds.y));
+      if (c->IsVisible() && c->IsPointInComponent(e.GetWhere()) && c->HandleMouseEvent(f)){
+        return true;
+      }
+    }
+    //PASS ONTO SOMETHING
     return false;
   }
 
@@ -180,11 +187,32 @@ namespace cs349
      * - Restore anything you changed in the Graphics context
      */
 
-    LOG_TODO << "TODO CS349: Implement Component::Paint (remove when implemented)";
-    if (this->GetBackgroundColor() == this->GetForegroundColor()) {
-      LOG_PAINT << "Warning: Component's background and foreground colors are identical in Component::Paint()";
-    }
+     if(this->visible){
+      
 
+      //save states
+      const unsigned long bgc = g->GetBackgroundColor();
+      const unsigned long fgc = g->GetForegroundColor();
+      g->SetBackgroundColor(this->backgroundColor);
+      g->SetForegroundColor(this->foregroundColor);
+       //prepare for drawing
+
+        
+      // if(children.size() == 0){
+      //   g->SetForegroundColor(0);
+      //   g->FillRect(bounds);
+      //   g->SetForegroundColor(16777215);
+      // }
+
+       this->PaintComponent(g);
+      for(std::vector<Component*>::iterator it = children.begin();it!=children.end();++it){
+        (*it)->Paint(g);
+      }
+      g->SetBackgroundColor(bgc);
+      g->SetForegroundColor(fgc);
+      //restore any thing
+    }
+    
 // TODO CS349
   }
 
@@ -259,5 +287,4 @@ namespace cs349
     this->visible = visible;
     this->Repaint();
   }
-
 }

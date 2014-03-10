@@ -183,6 +183,16 @@ namespace cs349 {
   }
 
   void TurtleGraphics::PaintComponent(Graphics* graphics) {
+    const unsigned long bgc = graphics->GetBackgroundColor();
+    const unsigned long fgc = graphics->GetForegroundColor();
+
+    graphics->SetBackgroundColor(fgc);
+    graphics->SetForegroundColor(bgc);
+    graphics->FillRect(Rectangle(0,0,300,300));
+    graphics->SetBackgroundColor(bgc);
+    graphics->SetForegroundColor(fgc);
+    graphics->DrawRect(Rectangle(0,0,100,100));
+
     AffineTransform originalTransform = graphics->GetTransform();
     SchemeComponent::PaintComponent(graphics);
     graphics->SetTransform(originalTransform);

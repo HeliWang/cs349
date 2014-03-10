@@ -123,7 +123,7 @@ namespace cs349
     XTextItem xTextItem;
     xTextItem.chars  = const_cast<char*>(text.c_str());
     xTextItem.nchars = text.size();
-    xTextItem.font   = None;
+    xTextItem.font   = XLoadFont(this->display, "a14");
     xTextItem.delta  = 0;
     Point newPoint = this->transform * p;
     XDrawText(this->display, this->window, this->gc, (int)newPoint.x, (int)newPoint.y, &xTextItem, 1);

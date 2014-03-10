@@ -12,8 +12,11 @@ namespace cs349 {
 
   class Button : public Component {
   private:
-    string label;
-// TODO CS349
+    string label, name;
+
+    int width,height;
+    vector<ActionListener*> listeners;
+    bool status;
   protected:
     /**
      * The method that does the actual painting of the component once
@@ -35,6 +38,20 @@ namespace cs349 {
      * text-based Button
      */
     Button(const string & name, const string & label);
+
+    /**
+     * Creates a new instance of a Button. For this class, name is a
+     * unique name to uniquely identify this Button in unit tests and
+     * within the interactor tree. label is the text that is displayed
+     * by this Button.
+     *
+     * @param name A unique name to identify this Button in debugging,
+     * unit tests, and within the interactor tree
+     * @param label The text shown in this button, if it is a
+     * text-based Button
+     * @param p The point where this button will show
+     */
+    Button(const string & name, const string & label,const Point &p);
 
     /**
      * Adds a listener to this button, which will be called when the
@@ -59,9 +76,15 @@ namespace cs349 {
      * Sets the text label for this button
      */
     void SetLabel(const string & label);
-
+    
+    /**
+     * Sets the size explicitly if you want
+     */
+    void SetSize(int w,int h);
     // TODO CS349: Add any other necessary methods or overrides here
 // TODO CS349
+
+    virtual bool HandleMouseEvent(const MouseEvent &e);
   };
 }
 

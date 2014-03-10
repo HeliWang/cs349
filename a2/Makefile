@@ -45,12 +45,14 @@ docs:
 # *** If you add new files, add them here, following the same pattern ***
 OBJS =		AffineTransform.o \
 		Button.o \
+		ButtonListener.o \
 		ComponentEvent.o \
 		Component.o \
 		Event.o \
 		EventQueue.o \
 		Graphics.o \
 		KeyEvent.o \
+		Label.o \
 		MouseEvent.o \
 		PaintEvent.o \
 		Panel.o \
@@ -65,6 +67,7 @@ OBJS =		AffineTransform.o \
 		Timer.o \
 		TimerEvent.o \
 		TimerListener.o \
+		TurtleListener.o \
 		TurtleGraphics.o \
 		TurtleGraphicsOp.o \
 		XApplication.o \
@@ -101,12 +104,14 @@ HEADERS =	$(SCHEME_DIR)/scheme.h \
 		ActionListener.h \
 		AffineTransform.h \
 		Button.h \
+		ButtonListener.h \
 		ComponentEvent.h \
 		Component.h \
 		Event.h \
 		EventQueue.h \
 		Graphics.h \
 		KeyEvent.h \
+		Label.h \
 		Logging.h \
 		MainPanel.h \
 		MouseEvent.h \
@@ -124,6 +129,7 @@ HEADERS =	$(SCHEME_DIR)/scheme.h \
 		Timer.h \
 		TimerEvent.h \
 		TimerListener.h \
+		TurtleListener.h \
 		TurtleGraphics.h \
 		TurtleGraphicsOp.h \
 		ValueListener.h \

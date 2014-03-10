@@ -4,6 +4,8 @@
 
 #include "Component.h"
 #include "ValueListener.h"
+#include "Point.h"
+#include "TurtleGraphics.h"
 #include <string>
 #include <vector>
 
@@ -30,10 +32,18 @@ class Slider : public Component {
   int lowerBound;
   int upperBound;
   int curValue;
+  
+  Point p;
+  
   string lowerBoundLabel;
   string upperBoundLabel;
   string thumbLabel;
+  string postpend;
+
   OrientationType orientation;
+  vector<ValueListener*> listeners;
+
+
 
 // TODO CS349
 
@@ -57,6 +67,21 @@ class Slider : public Component {
      * slider
      */
     Slider(const string & name, OrientationType orientation);
+
+    
+
+    /**
+     * Creates a new instance of a Slider with the name given. The
+     * name argument is used for unit tests when testing the
+     * interactor tree. Thus, the name should be unique.
+     *
+     * @param name A unique name used to identify this Slider. This
+     * name should not be printed out when painting
+     * @param orientation Whether to make a horizontal or vertical
+     * slider
+     * @param p the point where this slider will show.
+     */
+    Slider(const string & name, OrientationType orientation, const Point & p);
 
     /**
      * Adds a listener to this slider, which will be called when the
@@ -104,7 +129,7 @@ class Slider : public Component {
      * ValueListeners associated with the Slider. The Slider should
      * repaint itself after a new value is set.
      */
-    void SetCurValue(int value);
+    void SetCurValue(int vvv);
 
     /**
      * Returns the orientation of the slider (whether it is horizontal
@@ -152,6 +177,13 @@ class Slider : public Component {
 
     // TODO CS349: Add any other necessary methods or overrides here
 // TODO CS349
+    /**
+     * Sets the relative point for this slider
+     */
+    void SetLocation(const Point &p);
+
+    void PP();
+    virtual bool HandleMouseEvent(const MouseEvent &e);
   };
 }
 
