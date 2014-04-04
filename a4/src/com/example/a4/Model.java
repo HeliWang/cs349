@@ -18,10 +18,14 @@ import java.util.Observer;
 public class Model extends Observable {
     // List of fruit that we want to display
     private ArrayList<Fruit> shapes = new ArrayList<Fruit>();
+    private ArrayList<Slice> slices = new ArrayList<Slice>();
+    public int score = 0;
+    public int high = 0; 
 
     // Constructor
     Model() {
         shapes.clear();
+        slices.clear();
     }
 
     // Model methods
@@ -32,6 +36,20 @@ public class Model extends Observable {
         setChanged();
         notifyObservers();
     }
+    
+    public void addSlice(Slice s){
+  	  slices.add(s);
+    }
+    public ArrayList<Slice> getSlices(){
+  	  return (ArrayList<Slice>) slices.clone();
+    }
+    public void setSlices(ArrayList<Slice> al){
+    	slices = al;
+    }
+    
+    public void pp(){
+    	if(++score > high) high = score;
+    }
 
     public void remove(Fruit s) {
         shapes.remove(s);
@@ -39,6 +57,12 @@ public class Model extends Observable {
 
     public ArrayList<Fruit> getShapes() {
         return (ArrayList<Fruit>) shapes.clone();
+    }
+    
+    public void setShapes(ArrayList<Fruit> al){
+    	shapes = al;
+    	setChanged();
+        notifyObservers();
     }
 
     // MVC methods

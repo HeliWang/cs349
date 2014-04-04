@@ -45,14 +45,7 @@ public class View extends JPanel implements ModelListener{
 //    	timer.start();
     }
     
-    public void start(){
-    	timer.start();
-    	isRunning = true;
-    }
-    public void stop(){
-    	timer.stop();
-    	isRunning = false;
-    }
+    
     public void missed(){
     	timer.stop();
     	//do stuff
