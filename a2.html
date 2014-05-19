@@ -1,0 +1,491 @@
+<!DOCTYPE html> <html lang="en"> <head> <title>CS349: Assignment 2</title> <!-- Using Bootstrap for CSS --> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> </head> <body> <div class="container">
+<h1>CS 349 Assignment 2: University-Age Mutant Turtle Interfaces!</h1>
+
+<p><strong>The assignment is due Friday, February 7, 2014, at 5PM. No late
+assignments will be accepted. Submit early and often!</strong></p>
+
+<p>Source code for the assignment will be available to check out via
+Subversion (SVN). See the
+<a href="http://hci.uwaterloo.ca/courses/cs349/w14">class web page</a> for more
+details about Subversion.</p>
+
+<h2>Overview</h2>
+
+<p>The goal of this assignment is to build on what you learned about GUI
+toolkits in assignment one. Specifically, you will apply concepts from
+class related to:</p>
+
+<ul>
+<li>the design and implementation of components (widgets)</li>
+<li>painting</li>
+<li>event handling</li>
+<li>interactor trees</li>
+<li>mouse focus</li>
+<li>affine transformations</li>
+</ul>
+
+<p>You will do so by completing the entire WatGUI toolkit, creating
+custom components, and creating an application that supports
+displaying and stepping through turtle graphics.</p>
+
+<p>The resulting application will allows users to interactively
+manipulate a Logo-like turtle in real-time. While you do not need to
+implement the Logo/turtle graphics engine for this assignment,
+<a href="http://en.wikipedia.org/wiki/Logo_%28programming_language%29
+">you may be interested in its history</a>.</p>
+
+<p>The central idea of turtle graphics is that a "turtle" draws on a
+surface (piece of paper, screen, etc.) according to a core set of
+basic programming instructions. For example, you can tell the turtle
+to "rotate" or move "forward".</p>
+
+<p>We have implemented turtle graphics in the toolkit, where instructions
+for the turtle can be specified in Scheme or via the C++ API. As
+mentioned, you do not need to worry about implementing the turtle
+graphics engine, but you must integrate the turtle graphics component
+into the application (as described in detail below).</p>
+
+<p>To give you a flavor of the kind of output possible by the turtle
+graphics engine provided by the toolkit, here is a 23 point star:</p>
+
+<p><img src="./img/23_point_star.png" alt="23 Point Star" title="" /> </p>
+
+<h2>Completing the Toolkit</h2>
+
+<p>In the toolkit, you must complete the missing portions of the base
+WatGUI toolkit, plus some additional files for this assignment. As
+before, use grep (or some other search facility) to search for TODO
+items in the code. The README.md file contains general information
+about the toolkit and files provided.</p>
+
+<p>The provided code is substantially similar to the code base you worked
+with in A1. Based on feedback and observations from A1, we have made
+some minor modifications to the toolkit to make it easier for you to
+understand the code, debug it, and write unit tests for it. We have
+also added some new functionality and new files for this assignment.
+You may reuse all of your A1 code for this assignment to complete
+missing portions of the toolkit, though be aware that you might need
+to slightly alter your previous code to fit the aforementioned
+changes. (As an example, the eventQueue member variable in
+XApplication has changed to a pointer, to allow it to be swapped in
+and out at runtime for unit tests.)</p>
+
+<p><em>Note that completing the skeleton code and TODOs will not be
+sufficient to complete this assignment -- you will find that you will
+need to add new classes, new methods to existing classes, and other
+functionality to meet the requirements of this assignment. However, as
+before, you may not change the APIs for the code provided, though you
+may add to the APIs.</em></p>
+
+<h2>Visual Display and Design</h2>
+
+<p>You will be constructing an interface that resembles the following
+sketch:</p>
+
+<p><img src="./img/a2_sketch.png" alt="Assignment 2 Interface Sketch" title="" /> </p>
+
+<p>Note that this is a <em>sketch</em> -- you should use this as a starting
+point for making a better design. You must, however, support all the
+functionality depicted in the sketch and described below.</p>
+
+<h2>Interaction</h2>
+
+<p>To make the turtle draw, a user can provide commands via the Scheme
+ninterpreter. We have already created demo scripts to make the turtle
+draw interesting things, like stars. We'll describe how to load the
+demo scripts below, but for the most part, you don't need to worry
+about the Scheme interpreter or entering turtle commands via the
+interpreter.</p>
+
+<p>Once a turtle script is loaded, the TurtleGraphics component is filled
+with turtle drawing instructions. The user can use the interface to
+play back the instructions to watch the turtle move across the screen.
+The following functionality should be available to the user (you must
+implement this):</p>
+
+<ul>
+<li>Play/pause the turtle animation by using the white-filled triangular
+button in the center of the bottom row of buttons</li>
+<li>When clicking the black triangular buttons to the immediate left and
+right of the play button, the turtle should advance to the
+previous/next step, but only if the animation is paused. If it is
+running, pressing these buttons should have no effect.</li>
+<li>When clicking the black triangular buttons on the far left and right
+of the row of buttons, it should advance to the start/end of the
+animation. This should happen regardless of whether the animation is
+playing or not.</li>
+</ul>
+
+<p>As the user plays back the animation or steps through frames, the slider
+under the "Current Turtle Step" label should update to reflect the
+current position in the animation. In the sample sketch above, there
+are 200 frames of animation, and it is currently showing the 100th
+frame of the animation.</p>
+
+<p>Users should be able to interactively manipulate the "Current Turtle
+Step" slider to randomly access different frames of the turtle
+animation. If they start manipulating the slider, the animation should
+switch to being "paused" so the animation doesn't try to proceed while
+they are adjusting the slider. When they stop manipulating the slider,
+the animation should remain paused, regardless of whether it was playing
+when they first started manipulating the slider.</p>
+
+<p>There is also a playback rate slider, so users can vary the speed at
+which the turtle moves across the screen. More details about playback
+rate are provided below.</p>
+
+<p>Both sliders should have labels on either end to indicate the minimum
+and maximum values of the slider. The sliders should also display the
+current value above the slider's thumb (the solid black rectangle that
+the user manipulates).</p>
+
+<p>If the user clicks in the slider control, but not on the thumb, the
+thumb should snap to their mouse position. For example, if the user
+presses the mouse button near "10x" in the sketch above, the thumb
+should snap to that position and track the cursor until the mouse
+button is released.</p>
+
+<p>The buttons and sliders should <em>capture the mouse</em> when the user
+presses the mouse button in one of the controls. Thus, if the user
+presses the mouse down in the play button, then drags the mouse over
+to the "next frame" button and releases the mouse button, neither the
+play button nor next frame button should activate. Similarly, if the
+user starts adjusting the top slider, then drags the mouse to the
+other slider (without releasing the mouse button), the top slider
+should be the one that is responding to the mouse, not the lower
+slider. (We describe additions to the toolkit below that provide a
+skeleton for handling mouse focus.)</p>
+
+<h2>The Underlying Implementation and Architecture</h2>
+
+<p>We are providing you with the skeletons of two widget classes: Button
+and Slider. You must complete these and use these for the buttons and
+sliders of the application.</p>
+
+<p>You will also need to create a Label class that allows you to draw
+text at the location of the widget (we have not provided any template
+for that class).</p>
+
+<h3>Interactor Tree</h3>
+
+<p>For this assignment, you must create an interactor tree of components
+that matches this specification:</p>
+
+<pre><code>Root (The XWindow)
+|
+---Main Panel (a Panel component that contains all other widgets)
+   |
+   |---The turtle graphics output panel (a Panel component that contains the turtle graphics widgets)
+   |   |
+   |   |---The "Turtle Graphics Output" Label
+   |   |---The turtle graphics widget (the actual TurtleGraphics component)
+   |
+   |---Playback panel (a Panel component)
+   |   |
+   |   |---The "Playback Rate" Label
+   |   |---The playback rate Slider
+   |
+   |---The current turtle step panel (a Panel component)
+   |   |
+   |   |---The "Current Turtle Step" Label
+   |   |---The current turtle step Slider
+   |
+   |---The button panel (a Panel component)
+       |
+       |---The "go to start" Button
+       |---The "previous frame" Button
+       |---The "play" Button
+       |---The "next frame" Button
+       |---The "go to end" Button
+</code></pre>
+
+<p>This interactor tree describes what components are children of other
+components. For example, the root node, an XWindow object, contains
+the main panel, and only the main panel. The main panel contains four
+panels, each of which contains other components. If you follow this
+design, we can instantiate your main panel, then embed it in any
+XWindow we wish.</p>
+
+<p>The main panel is defined in <code>MainPanel.h/cpp</code>. (Also note that there
+is a new Panel class whose sole use is to contain other widgets. Its
+implementation is complete.) See MainPanel's constructor for an
+example of how we start building the interactor tree defined above.</p>
+
+<h3>Component IDs</h3>
+
+<p>If you look at the Component class, you'll see that its constructor
+takes a string argument representing its "name". The name is a unique
+identifier for the component, so we can more easily identify a
+component in the interactor tree for unit tests. It is not displayed
+onscreen by the Component -- its sole use is to aid in debugging and
+creating unit tests.</p>
+
+<p>We have created a list of component IDs to use for all of the
+components listed in the interactor tree above. See
+<code>A2WidgetIdentifiers.h</code> for a list of the constants to use when
+constructing each of the components above. Also see the constructor of
+MainPanel to see these constants being used when creating the
+MainPanel, the turtle graphics panel, and the turtle graphics widget.
+<em>You must use these identifiers, or our unit tests will not work.</em></p>
+
+<h3>Mouse Focus</h3>
+
+<p>As mentioned above, your buttons and sliders should properly capture
+mouse focus, so that if you start interacting with one widget and drag
+the mouse over to another widget, that second widget will not start
+receiving the mouse events.</p>
+
+<p>To assist you with handling mouse focus, we have augmented XWindow to
+provide methods that enable you to specify which component has mouse
+focus. <em>You will need to implement the logic to properly support
+mouse focus -- it is not enough to merely specify which Component has
+mouse focus. Instead, you must provide the logic within the toolkit so
+that mouse focus is properly assigned, released, and acted upon when
+receiving new events.</em> Mostly, this amounts to forwarding new
+MouseEvents directly to the Component with focus, but you must ensure
+that the coordinates within the MouseEvent are properly updated before
+handing it off to the Component with focus. (There are some other
+subtleties related to capturing and releasing mouse focus by
+Components, but with some experimentation, you should be able to get
+the basic behavior correct.)</p>
+
+<h3>TurtleGraphics Class/Widget</h3>
+
+<p>The TurtleGraphics class provides facilities for automatically
+rendering the turtle graphics to the screen. However, <em>you</em> are
+responsible for animating the turtle graphics. You animate the
+graphics by sequentially showing each step of the turtle, advancing at
+a rate of 10 fps. (You will need to use a Timer to make this animation
+work.)</p>
+
+<p>The key methods in TurtleGraphics for you to examine are:</p>
+
+<ul>
+<li>GetNumSteps()</li>
+<li>GoToStep()</li>
+<li>AddValueListener()</li>
+</ul>
+
+<p>Once a set of instructions have been loaded, GetNumSteps() returns the
+number of steps, or frames, that can be shown by the TurtleGraphics
+component. To cue to a specific step/frame, use the GoToStep() method,
+which will advance the turtle to that step/frame number.</p>
+
+<p>You should play back the steps at a rate of 10 frames per second
+(fps). Thus, if GetNumSteps() returns 100, and the user chooses to
+play back the animation from the start, it will take 10 seconds to
+show each of the 100 frames.</p>
+
+<p>The rate slider should allow the user to vary the playback speed from
+1 fps (1/10th of the normal playback rate), to 100 fps (10 times the
+normal playback rate).</p>
+
+<p>As the frames play back, the "Current Turtle Step" slider should
+update to reflect the current step number. <em>This slider must also
+update its display when a new set of instructions are loaded into the
+TurtleGraphics component. You can know when the number of steps has
+changed via an ValueListener object.</em> Specifically, create a class
+that implements the ValueListener interface, then add a pointer to an
+object of that class to TurtleGraphics via its AddValueListener()
+method. Objects that implement this interface will automatically have
+their ValueChanged() method called when the number of steps in the
+TurtleGraphics widget has changed.</p>
+
+<p>For the purposes of testing, whenever TurtleGraphic's
+BroadcastInstructionsChanged() method is called, it will tell all
+listeners registered with it that its value has changed. So you can
+manually call that method to ensure your objects are properly notified
+when TurtleGraphics' instructions have changed.</p>
+
+<h3>Turtle Graphics Scripts and Demos (Optional)</h3>
+
+<p>This section briefly describes how to show something more interesting
+in the TurtleGraphics component, if you wish. This section can be
+skipped, if desired.</p>
+
+<p>When the app first starts up, a random set of TurtleGraphics
+operations will execute (they are specified at the end of MainPanel's
+constructor).</p>
+
+<p>For something more interesting, you can have it create a star by
+entering the following code into the Scheme terminal when the
+application starts up:</p>
+
+<pre><code>(turtle-star (find-turtle-graphics-widget) 300 23)
+</code></pre>
+
+<p>The 300 argument indicates the length of the star's edge, and the 23
+argument indicates the number of points for the star. (As a side note,
+an even number of points are not perfectly handled, so an odd number
+of points will yield the best results when calling this function.)</p>
+
+<p>After executing this particular function, your slider should
+automatically update to indicate the number of steps in the set of
+instructions loaded by the star function.</p>
+
+<h4>Scheme Interface for Turtle Graphics (Optional)</h4>
+
+<p>This section is entirely optional. You may skip this, too!</p>
+
+<p>The function <code>(find-turtle-graphics-widget)</code> in the code above locates
+the TurtleGraphics widget in the interactor tree and returns its
+unique ID. This ID is used to specify which TurtleGraphics component
+the instructions apply to. So, for example, if we wanted to write a
+set of Scheme commands to make the turtle rotate and move forward, we
+could do the following:</p>
+
+<pre><code>(define turtle-id (find-turtle-graphics-widget))
+(turtle-rotate turtle-id 3.14)
+(turtle-forward turtle-id 100 #t) ;; #t indicates to draw as it moves forward
+</code></pre>
+
+<p>This will cause the turtle to rotate 180 degrees, then move forward
+100 pixels and draw as it moves forward.</p>
+
+<p>There are Scheme analogues to each of the methods defined in
+TurtleGraphics. Look for the list of turtle-graphics-functions in
+<code>cs349_init.scm</code> for their corresponding Scheme names.</p>
+
+<h2>Interaction Unit Tests</h2>
+
+<p>As in the first assignment, you must write unit tests to test the
+interaction. At a minimum, your unit tests should:</p>
+
+<ul>
+<li>Generate synthetic mouse events that are added to the event queue</li>
+<li>Test each of the interactive widgets on the screen using synthetic
+mouse events. You should have visible pauses (no longer than a few
+seconds) between these actions, so you can see the events occur.</li>
+</ul>
+
+<p>Your unit tests should be added to A2UnitTests.cpp.</p>
+
+<h2>Tips for Tackling this Assignment</h2>
+
+<p>There is a lot of code to mull over, but you should be able to get
+something up visible on the screen fairly quickly if you prioritize
+your coding efforts.</p>
+
+<p>Your initial efforts should be to copy over (and modify as necessary)
+the parts of assignment 1 that you can reuse in this assignment.</p>
+
+<p>The next major part to focus on is completing Component.cpp. This
+class is a base class for all of the other interactive widgets on the
+screen. Read the to-do items for that class and implement them. Make
+sure you read the accompanying documentation and all of the comments
+to understand what the missing code should do.</p>
+
+<p>Once you have Component implemented, the TurtleGraphics component
+should draw itself on screen. If it doesn't, you might want to try to
+get something simpler on the screen to begin with. For example, you
+can derive a Label class from Component and get it to paint itself on
+the screen by doing nothing more than overriding and implementing the
+PaintComponent() method. Once that works, then TurtleGraphics should
+work, too.</p>
+
+<p>After you have a Component and Label class working, move on to the
+Button class. Then, from there, move on to the Slider class.</p>
+
+<p>For Components that take text, rather than try to precisely define how
+much space each letter takes, it is OK to come up with an average
+amount of space per letter, and hard-code your components to that size.</p>
+
+<p>The unit tests in A2UnitTests will also provide guidance on expected
+behavior of elements of the toolkit. Your code should pass these unit
+tests. (One of the tests for the Slider may seem broken at first --
+it's not actually broken. When you encounter it, look at the
+Rectangle class to understand how hit testing is done for Rectangles.
+This will make more sense when/if that test fails for you...)</p>
+
+<p>As a final hint, note that there is a lot of shared functionality
+between components. For example, the TurtleGraphics class can be used
+as a template and guide for how to add, remove, and notify listeners
+via the ValueListener interface it supports.</p>
+
+<h2>Constraints</h2>
+
+<p>The majority of these constraints are the same as for assignment 1.
+New or altered points are listed first.</p>
+
+<ul>
+<li><p><em>You may use color</em> for this assignment if you wish.</p></li>
+<li><p>Your buttons can be purely graphical (as depicted in the sketch),
+text-based, or a combination of either.</p></li>
+<li><p><strong>The Slider class defines methods that allow it to be defined as a
+vertical or horizontal slider. You only need to support horizontal
+sliders for this assignment. Thus, you do not need to have code to
+make it render vertically, and we will not test this feature of the API.</strong></p></li>
+<li><p><strong>You may not change the existing APIs provided, but you may add to
+them.</strong> If you feel something is horribly broken about the current
+API's design, please talk to the instructor.</p></li>
+<li><p>When marking your application, we will run the a2 and a2_unittests
+binaries. As part of this testing, we will replace the
+MarkingUnitTests.cpp file to compile in our own tests. What this means
+is that the provided API should not change, otherwise, it will break
+our unit tests. As stated above, all of your interactor tree should be
+defined within MainPanel, rather than in the main function of the
+application, so we can instantiate an instance of MainPanel, then
+embed it in an XWindow of our choosing for testing.</p></li>
+<li><p>You may choose alternative fonts, but will need to research this
+possibility on your own. If you do change fonts, they will need to
+exist in the virtual machine environment provided.</p></li>
+<li><p>It is expected that you will use Internet search to help you find
+relevant documentation. However, you should not search for specific
+solutions to the assignment -- the work should be your own. <strong>Any code
+you use from a third party should be clearly commented in your code.</strong>
+This is a good practice to adopt, even outside of assignments, to help
+you recall what resources you found valuable when developing a
+solution.</p></li>
+<li><p>Your application should be responsive without throttling the CPU. We
+will test to ensure you don't max out the CPU when running.</p></li>
+<li><p>You <em>may not</em> use threads -- you do not need to use them for this
+assignment. Proper construction of the event loop will enable you to
+have a responsive application without threads.</p></li>
+<li><p>You do not need to double-buffer your application (don't worry if you
+don't know what that means.)</p></li>
+<li><p>TAs should be able to type <code>make</code> to produce the a2 and a2_unittests
+binaries. The <code>Makefile</code> is already set up to do this for you.</p></li>
+<li><p>Your code must compile on the class VM.</p></li>
+<li><p>You should follow the instructions in the toolkit's README.md file
+regarding logging of comments. <em>Do not use</em> stdout/stderr (e.g., printf,
+fprintf, cout, cerr) for logging -- use the included logging toolkit.
+<strong>We will deduct marks if you print debugging information to the
+console when we have not set the logging level for debugging.</strong></p></li>
+</ul>
+
+<h2>Toolkit Bugs</h2>
+
+<p>Given the size of the toolkit and the number of pieces of software
+integrated with it (logging, unit tests, and the interpreter), there
+<em>will</em> be bugs in the toolkit. However, we strive to make it as
+bug-free as possible. Please report any bugs in the toolkit and we
+will fix them as soon as possible.</p>
+
+<h2>Marking</h2>
+
+<p>Your assignment must conform to the specifications and constraints
+listed above, and be aesthetically pleasing and <em>usable</em>.</p>
+
+<p>We will not give strict or specific criteria for what constitutes an
+aesthetically pleasing or usable design. It is up to <em>you</em> to test
+these elements out with others. In achieving these goals, make sure
+you don't sacrifice usability for aesthetics -- people should be able
+to know how to use your interface without any assistance and with
+minimal experimentation.</p>
+
+<p>To repeat what was said above, in our unit tests, we will instantiate
+instances of the MainPanel, and also create arbitrary Button and
+Slider objects to test that they meet the specifications defined in
+their API, <em>with one exception</em>: Your Slider implementation does not
+need to honor being drawn vertically.</p>
+
+<p>To reiterate, we will test both the a2 and a2_unittests binaries,
+replacing the MarkingUnitTests.cpp file with our own unit tests. We
+will also inspect your code to ensure it meets the requirements stated
+above.</p>
+
+<h2>Submitting the Assignment</h2>
+
+<p>You'll submit using SVN. Instructions for submitting will be available
+on the course web page.</p>
+</div> </html>

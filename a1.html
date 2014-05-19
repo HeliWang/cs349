@@ -1,0 +1,181 @@
+<!DOCTYPE html> <html lang="en"> <head> <title>CS349: Assignment 1</title> <!-- Using Bootstrap for CSS --> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> </head> <body> <div class="container">
+<h1>CS 349 Assignment 1: Who Watches the StopWatchers?</h1>
+
+<p><strong>The assignment is due Friday, January 17, 2014, at 5PM. No late
+assignments will be accepted. Submit early and often!</strong></p>
+
+<p>Source code for the assignment will be available to check out via
+Subversion (SVN). See the
+<a href="http://hci.uwaterloo.ca/courses/cs349/w14">class web page</a> for more
+details about Subversion.</p>
+
+<h2>Overview</h2>
+
+<p>The goal of this assignment is to familiarize you with the basics of a
+graphical user interface (GUI) toolkit. Specifically, you'll become
+acquainted with the basics of events, event queues, responding to
+events, and painting. You'll use the X11-based WatGUI toolkit provided
+to create a stopwatch.</p>
+
+<h2>What You'll Do</h2>
+
+<p>In this assignment, you'll take the first steps towards completing the
+WatGUI X11 toolkit, and create a basic stopwatch that can be started,
+paused, and reset. The stopwatch will have both a numerical display
+and a graphical display, as described below. You will also create unit
+tests to test your application and interface.</p>
+
+<h3>Completing the Toolkit</h3>
+
+<p>In the toolkit, you must complete the missing portions of:</p>
+
+<ul>
+<li>XApplication.cpp</li>
+<li>PaintEvent.cpp</li>
+<li>StopWatch.cpp</li>
+<li>EventQueue.cpp</li>
+</ul>
+
+<p>The provided toolkit is documented to assist you in understanding its
+design and code. See the README.md file for information on the toolkit
+(and for instructions on how to create its HTML-based documentation).</p>
+
+<p>Note that there are other missing pieces of the toolkit, such as in
+Component.cpp. You are free to complete these, if you wish, though
+this assignment has been designed so that these other elements do
+not need to be completed. However, completing these other portions
+will give you a head start on assignment two, and also help you better
+understand the internals of GUI toolkits.</p>
+
+<h3>Visual Display and Design</h3>
+
+<p>The StopWatch should have two displays: a numerical display that
+displays the number of minutes, seconds, and milliseconds elapsed, and
+a more abstract, real-time graphical rendering of the same
+information. With very little effort (and without using text or
+numbers), a user should be able to infer the percentage of time
+elapsed from the graphical portion of the stopwatch alone.</p>
+
+<p>The more abstract graphic display should have three elements that
+depict the minutes, seconds, and milliseconds elapsed as a percentage
+of time. The percentage of minutes should be calculated as a
+percentage of tens of minutes (e.g., elapsed minutes % 10 / 10); for
+seconds, it should be percentage of a minute (e.g., elapsed seconds %
+60 / 60); and for milliseconds, it should be a percentage of a second
+(e.g., current millisecond % 1000 / 1000). Note the modulo operator:
+After 67 seconds, the display for seconds should represent 7/60.</p>
+
+<h3>Interaction</h3>
+
+<p>The stopwatch should respond to user input to support the following
+functions:</p>
+
+<ul>
+<li>Starting the stopwatch</li>
+<li>Pausing the stopwatch</li>
+<li>Unpausing the stopwatch</li>
+<li>Resetting it to zero</li>
+</ul>
+
+<p>Any user should be able to determine how to perform these operations
+without any assistance or instructions. <em>To ensure the usability of
+your stopwatch, you should test your app out with a friend who you can
+trust to provide critical feedback of your design. Do not ask the TAs
+or instructors if the design is "good enough" -- we'll just ask you
+what results you obtained from testing it with others.</em></p>
+
+<h3>Interaction Unit Tests</h3>
+
+<p>While the means of meeting the above design specifications are up to
+you, you must write unit tests to test the interaction. At a minimum,
+your unit tests should:</p>
+
+<ul>
+<li>Generate synthetic mouse events that are added to the event queue</li>
+<li>Test the start, pause, unpause, and reset functionality via these
+synthetic mouse events. You should have visible pauses (no longer than
+a few seconds) between these actions, so you can see the events occur.
+(There is plenty of code within the toolkit that shows how to pause
+execution for a fixed amount of time.)</li>
+</ul>
+
+<p>To make meaningful unit tests in this fashion, you will need to add
+state variables to the StopWatch class to determine whether it is
+running, paused, or reset.</p>
+
+<p>Your unit tests should be added to A1UnitTests.cpp. This file contains
+an example to follow.</p>
+
+<h2>Constraints</h2>
+
+<ul>
+<li><p><strong>You may not change the existing APIs provided, but you may add to
+them.</strong> If you feel something is horribly broken about the current
+API's design, please talk to the instructor.</p></li>
+<li><p>When marking your application, we will run the a1 and a1_unittests
+binaries. As part of this testing, we will replace the
+MarkingUnitTests.cpp file to compile in our own tests. What this means
+is that the provided API should not change, otherwise, it will break
+our unit tests. This also means that you should not have important
+code for your StopWatch class in your application's main function,
+because it won't get executed when running our marking unit tests.</p></li>
+<li><p>You may only use a monochromatic color scheme (e.g., black and white),
+and you may not use bitmapped images. These constraints are intended
+to encourage you to focus on visual composition.</p></li>
+<li><p>You may choose alternative fonts, but will need to research this
+possibility on your own. If you do change fonts, they will need to
+exist in the virtual machine environment provided.</p></li>
+<li><p>It is expected that you will use Internet search to help you find
+relevant documentation. However, you should not search for specific
+solutions to the assignment -- the work should be your own. <strong>Any code
+you use from a third party should be clearly commented in your code.</strong>
+This is a good practice to adopt, even outside of assignments, to help
+you recall what resources you found valuable when developing a
+solution.</p></li>
+<li><p>Your StopWatch application should be responsive without throttling the
+CPU. We will test to ensure you don't max out the CPU when running.</p></li>
+<li><p>You <em>may not</em> use threads -- you do not need to use them for this
+assignment. Proper construction of the event loop will enable you to
+have a responsive application without threads.</p></li>
+<li><p>You do not need to double-buffer your application (don't worry if you
+don't know what that means.)</p></li>
+<li><p>TAs should be able to type <code>make</code> to produce the a1 and a1_unittests
+binaries. The <code>Makefile</code> is already set up to do this for you.</p></li>
+<li><p>Your code must compile on the class VM.</p></li>
+<li><p>You should follow the instructions in the toolkit's README.md file
+regarding logging of comments. <em>Do not use</em> stdout/stderr (e.g., printf,
+fprintf, cout, cerr) for logging -- use the included logging toolkit.</p></li>
+</ul>
+
+<h2>Toolkit Bugs</h2>
+
+<p>Given the size of the toolkit and the number of pieces of software
+integrated with it (logging, unit tests, and the interpreter), there
+<em>will</em> be bugs in the toolkit. However, we strive to make it as
+bug-free as possible. Please report any bugs in the toolkit and we
+will fix them as soon as possible.</p>
+
+<h2>Marking</h2>
+
+<p>Your assignment must conform to the specifications and constraints
+listed above, and be aesthetically pleasing and <em>usable</em>.</p>
+
+<p>Note that the abstract graphical output and interaction specs are
+intentionally underdefined to give you an opportunity to creatively
+address the requirements provided. We will not give strict or specific
+criteria for what constitutes an aesthetically pleasing or usable
+design. It is up to <em>you</em> to test these elements out with others. In
+achieving these goals, make sure you don't sacrifice usability for
+aesthetics -- people should be able to learn how to use your stopwatch
+without any assistance and with minimal experimentation.</p>
+
+<p>To reiterate, we will test both the a1 and a1_unittests binaries,
+replacing the MarkingUnitTests.cpp file with our own unit tests. We
+will also inspect your code to ensure it meets the requirements stated
+above.</p>
+
+<h2>Submitting the Assignment</h2>
+
+<p>You'll submit using SVN. Instructions for submitting will be available
+on the course web page.</p>
+</div> </html>
